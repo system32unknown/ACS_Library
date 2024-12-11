@@ -81,8 +81,9 @@ end
 function acs.bypassbuild():boolean
     local status, message = pcall(function()
         for _, v in PS:GetPlayers() do
-            local fort = acs.getACS_Class(v, "Kit").Fortifications
-            if acs.getACS_Class(v, "Kit") ~= nil then
+            local kit = acs.getACS_Class(v, "Kit")
+            if kit ~= nil then
+                local fort = kit.Fortifications
                 if acs.newACS then
                     ACS_EVENTS.Refil:FireServer(fort, -99999999)
                 else
